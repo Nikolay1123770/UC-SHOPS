@@ -1,27 +1,19 @@
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+import uvicorn
 import asyncio
-from bot import start_bot  # импортируем запуск бота из bot.py
+
+from start_bot import main as start_bot_main  # Импорт функции запуска бота
 
 app = FastAPI()
 
 
+@app.get("/")
+async def root():
+    return {"message": "UC SHOP is running"}
+
+
+# Запуск бота параллельно с сервером FastAPI
 @app.on_event("startup")
 async def startup_event():
-    # Запускаем бота в фоне при старте FastAPI
-    asyncio.create_task(start_bot())
-
-
-@app.get("/")
-def read_root():
-    return {"status": "ok", "message": "UC SHOP API запущен."}
-
-
-@app.get("/privacy-policy")
-def privacy_policy():
-    return FileResponse("html/privacy-policy.html", media_type="text/html")
-
-
-@app.get("/terms-of-service")
-def terms_of_service():
-    return FileResponse("html/terms-of-service.html", media_type="text/html")
+    loop = asyncio.get_event_loop()
+    loop.create_task(start_bot_main())
