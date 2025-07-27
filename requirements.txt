@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 aiogram==3.4.1
 fastapi
 uvicorn
-=======
 aiogram==3.4.1
 fastapi
 uvicorn
->>>>>>> ea298f091306d66e35ad6476249ea0d7d7abae82
