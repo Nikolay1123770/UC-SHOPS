@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import asyncio
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
@@ -25,7 +24,7 @@ def start_bot():
 if __name__ == "__main__":
     Thread(target=start_fastapi).start()
     Thread(target=start_bot).start()
-=======
+
 import asyncio
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
@@ -52,4 +51,3 @@ def start_bot():
 if __name__ == "__main__":
     Thread(target=start_fastapi).start()
     Thread(target=start_bot).start()
->>>>>>> ea298f091306d66e35ad6476249ea0d7d7abae82
